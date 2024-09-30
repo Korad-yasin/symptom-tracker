@@ -4,9 +4,9 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
 
 interface ClickableTextProps {
-    onActionPress: (event: GestureResponderEvent) => void;
+    onActionPress?: (event: GestureResponderEvent) => void;
     mainText?: string;
-    actionText: string;
+    actionText?: string;
     style?: StyleProp<ViewStyle>;
 
 

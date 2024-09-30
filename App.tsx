@@ -1,9 +1,8 @@
 // App.tsx
 
-// App.tsx
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import RootNavigator from './src/navigation'; // Import the root navigator from index.tsx
+import RootNavigator from './src/navigation'; 
 
 export default function App() {
   return (

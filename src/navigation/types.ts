@@ -4,11 +4,11 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'; // Impo
 
 // Define a type for the entire authentication navigation stack
 export type AuthStackParamList = {
-  Login: undefined; // The Login screen does not expect any parameters
-  Register: undefined; // The Register screen expects an optional 'referrer' parameter
-  ForgotPassword: undefined; // The ForgotPassword screen does not expect any parameters
-  OTP: { email: string }; // The OTP screen expects an 'email' parameter of type string
-  NewPassword: { token: string }; // The NewPassword screen expects a 'token' parameter of type string
+  Login: undefined; 
+  Register: undefined; 
+  ForgotPassword: undefined; 
+  Welcome: undefined;
+
 };
 
 // Define a type for props that each screen component will receive

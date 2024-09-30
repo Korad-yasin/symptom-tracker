@@ -1,14 +1,29 @@
 // screens/Auth/ForgotPassword.tsx
 
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { AuthStackParamList } from '../../navigation/types';
 import BackButton from '../../components/buttons/BackButton';
+import SubmitButton from '../../components/buttons/SubmitButton';
+import EmailAndName from '../../components/forms/EmailAndName';
+import ClickableText from '../../components/Texts/clickableTesxt';
+import ScreenTitle from '../../components/Texts/ScreenTitle';
 
-const ForgotPassword: React.FC = () => {
+type Props = NativeStackScreenProps<AuthStackParamList, 'ForgotPassword'>;
+
+const ForgotPassword: React.FC <Props> = ({navigation}) => {
+
+    const [email, setEmail] = useState('');
 
     const handleBackPress = () => {
         console.log('Back button pressed!');
-        // Navigation logic here
+        navigation.navigate('Login');
+
+    };
+
+    const sendCode = () => {
+        navigation.navigate('Login');
     };
 
     return (
@@ -18,7 +33,30 @@ const ForgotPassword: React.FC = () => {
                   <BackButton onBackPress={handleBackPress} />
                 </View>
                 <View style={styles.mainContainer}>
-                  <Text>Login Screen</Text>
+                    <View style={styles.subContainer}>
+                      <ScreenTitle 
+                         titleText='Forgot Password?'
+                       />
+                    </View>
+                    <View style={styles.sub1Container}>
+                      <EmailAndName 
+                         value={email}  
+                         onChangeText={setEmail} 
+                       /> 
+                      <SubmitButton 
+                         onButtonPress={sendCode}
+                         buttonText='send code'
+                       />
+                    </View>
+                    <View style={styles.sub2Container}>
+                      <ClickableText 
+                         actionText="Login"
+                         mainText="Remember password?"
+                         onActionPress={sendCode}
+                         style={styles.text}
+                       />
+
+                    </View>
                 </View>
            </View>
         </SafeAreaView>
@@ -29,6 +67,7 @@ const ForgotPassword: React.FC = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: 'white'
     }, 
     safeArea: {
         flex: 1,
@@ -36,15 +75,32 @@ const styles = StyleSheet.create({
     },
     header: {
         flex: 1,
-        backgroundColor: 'pink',
+
         
 
     },
     mainContainer: {
         flex: 6,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'azure',
+
+    },
+    subContainer: {
+        flex: 0.2,
+
+
+    },
+    sub1Container: {
+        flex: 0.3,
+        justifyContent: 'space-around',
+
+    },
+    sub2Container: {
+        flex: 0.5,
+        justifyContent: 'flex-end',
+        paddingVertical: 30,
+        
+    },
+    text : {
+        alignSelf: 'center',
     },
     
 });

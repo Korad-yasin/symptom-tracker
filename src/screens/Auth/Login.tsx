@@ -52,16 +52,16 @@ const Login: React.FC<Props> = ({navigation}) => {
                  <SubmitButton 
                      onButtonPress={login}
                      buttonText='Login'
-                 />
+                   />
                  <Gbutton 
-                   onGbuttonPress={login}
-                 />
+                     onGbuttonPress={login}
+                   />
                  <ClickableText 
                      actionText="Register Now"
                      mainText="Don't have an account?"
                      onActionPress={login}
                      style={styles.text}
-                 />
+                   />
                 </View>
            </View>
         </SafeAreaView>
