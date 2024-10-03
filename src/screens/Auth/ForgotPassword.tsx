@@ -9,6 +9,7 @@ import SubmitButton from '../../components/buttons/SubmitButton';
 import EmailAndName from '../../components/forms/EmailAndName';
 import ClickableText from '../../components/Texts/clickableTesxt';
 import ScreenTitle from '../../components/Texts/ScreenTitle';
+import { Styles } from '../../../styles/Global';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'ForgotPassword'>;
 
@@ -27,9 +28,9 @@ const ForgotPassword: React.FC <Props> = ({navigation}) => {
     };
 
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.container}>
-                <View style={styles.header}>
+        <SafeAreaView style={Styles.safeArea}>
+            <View style={Styles.container}>
+                <View style={Styles.header}>
                   <BackButton onBackPress={handleBackPress} />
                 </View>
                 <View style={styles.mainContainer}>
@@ -65,27 +66,13 @@ const ForgotPassword: React.FC <Props> = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'white'
-    }, 
-    safeArea: {
-        flex: 1,
-
-    },
-    header: {
-        flex: 1,
-
-        
-
-    },
+    
     mainContainer: {
         flex: 6,
 
     },
     subContainer: {
         flex: 0.2,
-
 
     },
     sub1Container: {

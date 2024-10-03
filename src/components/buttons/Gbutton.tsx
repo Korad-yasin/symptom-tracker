@@ -39,8 +39,7 @@ const Gbutton: React.FC<GbuttonProps> = ({onGbuttonPress}) => {
   const styles = StyleSheet.create({
     container : {
         paddingHorizontal: 10,
-        bottom: '3%',
-        
+
         
     },
     lineContainer : {

@@ -1,6 +1,7 @@
 // In components/Texts/ScreenTitle.js
 import React from 'react';
 import { View, Text, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { Styles } from '../../../styles/Global';
 
 interface ScreenTitleProps {
     titleText: string,
@@ -10,7 +11,7 @@ interface ScreenTitleProps {
 const ScreenTitle : React.FC<ScreenTitleProps> = ({ titleText, style }) => {
   return (
     <View style={[styles.header, style]}>
-      <Text style={styles.welcome}>{titleText}</Text>
+      <Text style={Styles.title}>{titleText}</Text>
     </View>
   );
 };
@@ -20,13 +21,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
  
   },
-  welcome: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#000',
-    textAlign: 'left',
 
-  }
 });
 
 export default ScreenTitle;

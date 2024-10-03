@@ -1,7 +1,8 @@
 // components/forms/PasswordInput.js
 import React, {useState} from 'react';
-import { TextInput, View, StyleSheet, TouchableOpacity, TextInputProps  } from 'react-native';
+import { TextInput, View, TouchableOpacity, TextInputProps  } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Styles } from '../../../styles/Global';
 
 
 // Define types for the component props
@@ -23,9 +24,9 @@ const PasswordInput:  React.FC<PasswordInputProps>= ({ value, onChangeText, styl
 
   return (
     <View style={{ width: '100%' , alignItems: 'center',}}>
-        <View style={[styles.container, style]}>
+        <View style={[Styles.passContainer, style]}>
           <TextInput
-              style={styles.input}
+              style={Styles.passText}
               placeholder="Password"
               secureTextEntry={!isPasswordVisible}
               value={String(value)}
@@ -33,16 +34,16 @@ const PasswordInput:  React.FC<PasswordInputProps>= ({ value, onChangeText, styl
              autoCapitalize="none"
            />
           <TouchableOpacity
-             style={styles.visibilityToggle}
+             style={Styles.visibilityToggle}
              onPress={() => setIsPasswordVisible(!isPasswordVisible)}
            >
-             <Icon name={isPasswordVisible ? "eye-off" : "eye"} size={24} color="grey" />
+             <Icon name={isPasswordVisible ? "eye-off" : "eye"} size={24} color="grey"  />
            </TouchableOpacity>
        </View>
        {showRetype && (
-        <View style={[styles.container, style]}>
+        <View style={[Styles.passContainer, style]}>
           <TextInput
-             style={styles.input}
+             style={Styles.passText}
              placeholder="Retype Password"
              secureTextEntry={!isRetypePasswordVisible}
              value={String(retypeValue)}
@@ -50,7 +51,7 @@ const PasswordInput:  React.FC<PasswordInputProps>= ({ value, onChangeText, styl
              autoCapitalize="none"
            />
           <TouchableOpacity
-             style={styles.visibilityToggle}
+             style={Styles.visibilityToggle}
              onPress={() => setisRetypePasswordVisible(!isRetypePasswordVisible)}
             >
             <Icon name={isRetypePasswordVisible ? "eye-off" : "eye"} size={24} color="grey" />
@@ -62,36 +63,6 @@ const PasswordInput:  React.FC<PasswordInputProps>= ({ value, onChangeText, styl
   );
 };
 
-// stylesheet
 
-const styles = StyleSheet.create({
-  container: {
-      height: 55,
-      width: '90%',
-      borderRadius: 8,
-      paddingHorizontal: 10,
-      borderWidth: 1,
-      borderColor: '#DADADA',
-      backgroundColor: '#F7F8F9',
-      alignItems: 'flex-start',
-      justifyContent: 'center',
-      marginTop: 15,
-
-  },
-  input: {
-      fontSize: 18,
-      width: '85%',
-      top: '25%',
-
-  },
-  icon: {
-      padding: 8,
-
-  },
-  visibilityToggle: {
-      left: '90%',
-      bottom: '20%',
-  },
-});
 
 export default PasswordInput;

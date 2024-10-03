@@ -6,8 +6,8 @@ import BackButton from '../../components/buttons/BackButton';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/types';
 import RegisterForm from '../../components/forms/RegisterForm';
-import SubmitButton from '../../components/buttons/SubmitButton';
 import Gbutton from '../../components/buttons/Gbutton';
+import { Styles } from '../../../styles/Global';
 
 
 
@@ -21,26 +21,19 @@ const Register: React.FC<Props> = ({navigation}) => {
         navigation.navigate('Login');
     };
 
-    const register = () => {
-        navigation.navigate('Login');
-    };
-
+   
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <View style={styles.container}>
-                <View style={styles.header}>
+        <SafeAreaView style={Styles.safeArea}>
+            <View style={Styles.container}>
+                <View style={Styles.header}>
                   <BackButton 
                      onBackPress={handleBackPress} 
                   />
                 </View>
                 <View style={styles.mainContainer}>
-                  <RegisterForm />
-                  <SubmitButton 
-                     onButtonPress={register}
-                     buttonText='Register'
-                  />
+                  <RegisterForm navigation={navigation} />
                   <Gbutton 
-                   onGbuttonPress={register}
+                   onGbuttonPress={handleBackPress}
                    />
                 </View>
            </View>
@@ -50,22 +43,12 @@ const Register: React.FC<Props> = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'white'
-    }, 
-    safeArea: {
-        flex: 1,
-
-    },
-    header: {
-        flex: 1,
-    },
     mainContainer: {
         flex: 6,
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
         paddingHorizontal: 10,
-        marginTop: 40,
+
+
     },
     
 });

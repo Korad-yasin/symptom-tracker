@@ -1,6 +1,7 @@
 // src/components/forms/EmailAndName.tsx
 import React from 'react';
-import { TextInput, View, StyleSheet, TextInputProps } from 'react-native';
+import { TextInput, View, TextInputProps } from 'react-native';
+import { Styles } from '../../../styles/Global';
 
 
 interface EmailAndNameProps {
@@ -19,9 +20,9 @@ const EmailAndName: React.FC<EmailAndNameProps> = ({value, onChangeText, nameVal
   return (
     <View style={{ width: '100%', alignItems: 'center' }}>
       {showName && (
-        <View style={[styles.container, style]}>
+        <View style={[Styles.formContainer, style]}>
           <TextInput
-            style={styles.input}
+            style={Styles.formInput}
             placeholder="Name"
             value={nameValue}
             onChangeText={onChangeName}
@@ -29,9 +30,9 @@ const EmailAndName: React.FC<EmailAndNameProps> = ({value, onChangeText, nameVal
           />
         </View>
       )}
-      <View style={[styles.container, style]}>
+      <View style={[Styles.formContainer, style]}>
         <TextInput
-          style={styles.input}
+          style={Styles.formInput}
           placeholder="Your Email"
           value={value}
           onChangeText={onChangeText}
@@ -44,25 +45,5 @@ const EmailAndName: React.FC<EmailAndNameProps> = ({value, onChangeText, nameVal
   );
 };
 
-// Define styles for the component (can be customized or moved to a separate file)
-const styles = StyleSheet.create({
-    container: {
-        height: 55,
-        width: '90%',
-        borderRadius: 8,
-        paddingHorizontal: 10,
-        borderWidth: 1,
-        borderColor: '#DADADA',
-        backgroundColor: '#F7F8F9',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 15,
-        
-    },
-    input: {
-        fontSize: 18,
-        width: '100%',
-    },
-});
 
 export default EmailAndName;
