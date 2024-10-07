@@ -8,7 +8,7 @@ import { AuthStackParamList } from '../../navigation/types';
 import LoginForm from '../../components/forms/LoginForm';
 import ClickableText from '../../components/Texts/clickableTesxt';
 import ScreenTitle from '../../components/Texts/ScreenTitle';
-import Gbutton from '../../components/buttons/Gbutton';
+
 import { Styles } from '../../../styles/Global';
 
 
@@ -35,9 +35,6 @@ const Login: React.FC<Props> = ({navigation}) => {
                          navigation={navigation}
                      />
                  </View>
-                 <Gbutton 
-                     onGbuttonPress={handleBackPress}
-                   />
                  <ClickableText 
                      actionText="Register Now"
                      mainText="Don't have an account?"

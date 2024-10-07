@@ -2,6 +2,7 @@
   "name": "symptom-tracker",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
+
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -20,7 +21,11 @@
     "react-native-screens": "^3.34.0",
     "react-native-svg": "^15.7.1",
     "react-native-vector-icons": "^10.2.0",
-    "@react-native-async-storage/async-storage": "1.23.1"
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "expo-auth-session": "~5.5.2",
+    "expo-crypto": "~13.0.2",
+    "expo-application": "~5.9.1",
+    "expo-random": "~14.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

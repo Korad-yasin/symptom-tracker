@@ -1,10 +1,12 @@
 // src/components/forms/Register.tsx
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import { View, StyleSheet, Text } from 'react-native'; 
 import EmailAndName from './EmailAndName'; 
 import PasswordInput from './PasswordInput';
 import SubmitButton from '../buttons/SubmitButton';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import Gbutton from '../../components/buttons/Gbutton';
+import { createUserWithEmailAndPassword, signInWithCredential, GoogleAuthProvider  } from 'firebase/auth';
+import * as Google from 'expo-auth-session/providers/google';
 import { auth } from '../../../firebaseConfig';
 
 interface RegisterFormProps {
@@ -19,6 +21,10 @@ const RegisterForm: React.FC<RegisterFormProps> = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId: "601274078815-grlj98s8njiouhhl7cgvpk0aruscs2r5.apps.googleusercontent.com", // Replace with Firebase Web Client ID
+  });
 
   const handleRegister = async () => {
     if (password !== retypePassword) {
@@ -38,6 +44,26 @@ const RegisterForm: React.FC<RegisterFormProps> = ({navigation}) => {
       }
     }
   };
+
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const { id_token } = response.params;
+
+      // Create a Google credential with the token
+      const credential = GoogleAuthProvider.credential(id_token);
+
+      // Sign in with the credential from the Google user
+      signInWithCredential(auth, credential)
+        .then(() => {
+          console.log('Registered with Google!');
+          navigation.navigate('Login'); 
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        });
+    }
+  }, [response]);
+
 
 
 
@@ -60,10 +86,16 @@ const RegisterForm: React.FC<RegisterFormProps> = ({navigation}) => {
        />
        {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
       </View>
-       <SubmitButton 
+      <View>
+      <SubmitButton 
          onButtonPress={handleRegister}
          buttonText='Register'
        />
+       <Gbutton 
+          onGbuttonPress={() => promptAsync()}
+          disabled={!request}
+        />
+      </View>
     </View>
   );
 };

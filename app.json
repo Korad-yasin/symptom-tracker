@@ -14,7 +14,12 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.trybe.symptomtracker",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.601274078815-ubfbo4drp7a0idg8l6uipuqeu8520dfn"
+        }
+      } 
     },
     "android": {
       "adaptiveIcon": {

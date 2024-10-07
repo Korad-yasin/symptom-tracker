@@ -5,6 +5,7 @@ import EmailAndName from './EmailAndName';
 import PasswordInput from './PasswordInput';
 import ClickableText from '../../components/Texts/clickableTesxt';
 import SubmitButton from '../buttons/SubmitButton';
+import Gbutton from '../../components/buttons/Gbutton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebaseConfig';
 
@@ -56,12 +57,19 @@ const LoginForm: React.FC<LoginFormProps> = ({navigation}) => {
           onActionPress={ForgotPassword}
           style={styles.forgotPasswordText} 
         />
-      </View>
+       </View>
        {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
+       <View>
        <SubmitButton 
           onButtonPress={handleLogin}
           buttonText='Login'
         />
+        <Gbutton 
+         onGbuttonPress={handleLogin}
+        />
+
+       </View>
+       
     </View>
   );
 };

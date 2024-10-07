@@ -6,7 +6,6 @@ import BackButton from '../../components/buttons/BackButton';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/types';
 import RegisterForm from '../../components/forms/RegisterForm';
-import Gbutton from '../../components/buttons/Gbutton';
 import { Styles } from '../../../styles/Global';
 
 
@@ -32,9 +31,6 @@ const Register: React.FC<Props> = ({navigation}) => {
                 </View>
                 <View style={styles.mainContainer}>
                   <RegisterForm navigation={navigation} />
-                  <Gbutton 
-                   onGbuttonPress={handleBackPress}
-                   />
                 </View>
            </View>
         </SafeAreaView>
