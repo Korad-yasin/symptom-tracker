@@ -10,12 +10,17 @@ import EmailAndName from '../../components/forms/EmailAndName';
 import ClickableText from '../../components/Texts/clickableTesxt';
 import ScreenTitle from '../../components/Texts/ScreenTitle';
 import { Styles } from '../../../styles/Global';
+import { auth } from '../../../firebaseConfig';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'ForgotPassword'>;
 
 const ForgotPassword: React.FC <Props> = ({navigation}) => {
 
+
     const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(''); 
 
     const handleBackPress = () => {
         console.log('Back button pressed!');
@@ -23,8 +28,24 @@ const ForgotPassword: React.FC <Props> = ({navigation}) => {
 
     };
 
-    const sendCode = () => {
-        navigation.navigate('Login');
+    const sendCode = async () => {
+        setLoading(true);
+        setErrorMessage('error');
+
+        try {
+            await sendPasswordResetEmail(auth, email);
+            console.log('Password reset email sent!');
+            setLoading(false);
+            navigation.navigate('Login');
+        } catch (error) {
+            setLoading(false);
+            if (error instanceof Error) {
+                setErrorMessage(error.message);
+
+            } else {
+                setErrorMessage('An unexpected error occurred.');
+            }
+        }  
     };
 
     return (
@@ -53,7 +74,7 @@ const ForgotPassword: React.FC <Props> = ({navigation}) => {
                       <ClickableText 
                          actionText="Login"
                          mainText="Remember password?"
-                         onActionPress={sendCode}
+                         onActionPress={handleBackPress}
                          style={styles.text}
                        />
 
@@ -69,10 +90,13 @@ const styles = StyleSheet.create({
     
     mainContainer: {
         flex: 6,
+        
 
     },
     subContainer: {
         flex: 0.2,
+        
+        
 
     },
     sub1Container: {

@@ -4,9 +4,10 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity,GestureResponderEvent  } from 'react-native';
 import { SvgXml } from 'react-native-svg';  
 
-// Define prop types using an interface
+
 interface GbuttonProps {
-    onGbuttonPress: (event: GestureResponderEvent) => void; // Define the type for the onBackPress prop
+    onGbuttonPress: (event: GestureResponderEvent) => void; 
+    disabled?: boolean;
 }
 
 const GbuttonSvg = `
@@ -19,7 +20,7 @@ const GbuttonSvg = `
 </svg>
 `;
 
-const Gbutton: React.FC<GbuttonProps> = ({onGbuttonPress}) => {
+const Gbutton: React.FC<GbuttonProps> = ({onGbuttonPress, disabled = false}) => {
     return (
         <View style={styles.container} >
              <View style={styles.lineContainer} >
@@ -27,16 +28,17 @@ const Gbutton: React.FC<GbuttonProps> = ({onGbuttonPress}) => {
                  <Text style={styles.text}>Or Login with</Text>
                  <View style={styles.line} ></View>
              </View>
-             <TouchableOpacity onPress={onGbuttonPress} style={styles.button}>
+             <TouchableOpacity onPress={onGbuttonPress} disabled={disabled} style={styles.button}>
                  <SvgXml xml={GbuttonSvg} width="105" height="56" />
               </TouchableOpacity>
         </View>
         
     );
-  }
+}
   
-  
-  const styles = StyleSheet.create({
+// stylesheet
+
+const styles = StyleSheet.create({
     container : {
         paddingHorizontal: 10,
 

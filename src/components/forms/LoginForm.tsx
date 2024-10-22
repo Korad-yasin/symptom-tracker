@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
       flex: 0.9,
       justifyContent: 'space-between',
       paddingVertical: 10,
-      backgroundColor: 'yellow',
+     
     },
     forgotPasswordText : {
       alignSelf: 'flex-end',

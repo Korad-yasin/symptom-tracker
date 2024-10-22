@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
       flex: 0.7,
       justifyContent: 'space-between',
       paddingVertical: 5,
-      backgroundColor: 'yellow',
+      
         
   
     },
